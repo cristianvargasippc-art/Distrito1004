@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CELIDER 10-04 | "En nuestras manos está el futuro"</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header con logos BANNER */
+        .header-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 80px;
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+            border-bottom: 5px solid #ffbe0b;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-logos::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50%, 100% { left: 200%; }
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            z-index: 1;
+        }
+
+        .logo {
+            height: 150px;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.7));
+        }
+
+        .logo:hover {
+            transform: scale(1.15) rotate(-5deg);
+            filter: drop-shadow(0 12px 30px rgba(255, 190, 11, 0.8));
+        }
+
+        /* Navegación */
+        nav {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px 80px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8);
+            border-bottom: 3px solid #ff006e;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            padding: 12px 30px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff006e, #ffbe0b);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        nav a:hover {
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 0, 110, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 120px 20px;
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.9), rgba(131, 56, 236, 0.9), rgba(58, 134, 255, 0.9));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 2px, transparent 2px);
+            background-size: 60px 60px;
+            animation: moveGrid 25s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(60px, 60px) rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 96px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-shadow: 6px 6px 15px rgba(0, 0, 0, 0.8);
+            animation: fadeInDown 1s ease;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(90deg, #ffbe0b, #fff, #ffbe0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            font-style: italic;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+            animation: fadeInUp 1s ease 0.3s both;
+            position: relative;
+            z-index: 1;
+            color: #fff;
+        }
+
+        .period {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: #ffbe0b;
+            animation: pulse 2s ease infinite;
+            position: relative;
+            z-index: 1;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #ffbe0b, #ff006e);
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 190, 11, 0.5);
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 0, 110, 0.7);
+            background: linear-gradient(135deg, #ff006e, #ffbe0b);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-80px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(80px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        /* Secciones */
+        .section {
+            max-width: 1400px;
+            margin: 100px auto;
+            padding: 80px 60px;
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.15), rgba(131, 56, 236, 0.15));
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.5);
+            border: 3px solid rgba(255, 190, 11, 0.4);
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 64px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(90deg, #ffbe0b, #ff006e, #3a86ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 40px;
+            font-weight: 900;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #ffbe0b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section p, .section li {
+            font-size: 20px;
+            line-height: 1.9;
+            margin-bottom: 18px;
+            font-weight: 400;
+        }
+
+        /* Tarjetas de Equipo */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .team-card {
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.25), rgba(131, 56, 236, 0.25));
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 3px solid rgba(255, 190, 11, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 190, 11, 0.2), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+
+        .team-card:hover::before {
+            left: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 60px rgba(255, 0, 110, 0.6);
+            border-color: #ffbe0b;
+        }
+
+        .team-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: #ffbe0b;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .team-card h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #3a86ff;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        /* Ejes Estratégicos */
+        .ejes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .eje-card {
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 3px solid #ffbe0b;
+        }
+
+        .eje-card:hover {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 25px 70px rgba(255, 190, 11, 0.7);
+        }
+
+        .eje-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: #ffbe0b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Logo ONU flotante */
+        .onu-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 140px;
+            height: 140px;
+            animation: float 3s ease-in-out infinite;
+            z-index: 999;
+            filter: drop-shadow(0 8px 25px rgba(255, 190, 11, 0.8));
+            transition: all 0.3s ease;
+        }
+
+        .onu-float:hover {
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 12px 35px rgba(255, 0, 110, 0.9));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            margin-top: 100px;
+            border-top: 5px solid #ff006e;
+        }
+
+        footer p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 12px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-logos {
+                flex-direction: column;
+                padding: 30px;
+            }
+
+            .logo {
+                height: 100px;
+            }
+
+            nav {
+                padding: 20px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .hero p {
+                font-size: 24px;
+            }
+
+            .period {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 50px 30px;
+            }
+
+            .section h2 {
+                font-size: 42px;
+            }
+
+            .section h3 {
+                font-size: 28px;
+            }
+
+            .onu-float {
+                width: 100px;
+                height: 100px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-left: 20px;
+        }
+
+        strong {
+            color: #ffbe0b;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header con logos BANNER -->
+    <div class="header-logos">
+        <div class="logo-container" style="width: 100%; justify-content: center;">
+            <h2 style="font-family: 'Montserrat', sans-serif; font-size: 48px; font-weight: 900; color: #ffbe0b; text-shadow: 4px 4px 10px rgba(0,0,0,0.8);">CELIDER 10-04</h2>
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#mision-vision">Misión y Visión</a></li>
+            <li><a href="#equipo">Equipo</a></li>
+            <li><a href="#propuestas">Propuestas</a></li>
+            <li><a href="#plan">Plan Estratégico</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <h1>CELIDER 10-04</h1>
+        <p>"En nuestras manos está el futuro"</p>
+        <div class="period">Período 2026-2027</div>
+        <a href="https://preview.canva.site/2c8c9685-0459-48f5-b44c-93016e140338/celider1004.com/en-nuestras-manos-est-el-futuro" target="_blank" class="download-btn">🔍 VER PROPUESTAS DETALLADAS</a>
+    </section>
+
+    <!-- Misión y Visión -->
+    <section id="mision-vision" class="section">
+        <h2>Nuestra Identidad</h2>
+        
+        <h3>Introducción</h3>
+        <p>El liderazgo estudiantil constituye una herramienta fundamental para el fortalecimiento de las competencias académicas, sociales y cívicas de los jóvenes, permitiéndoles asumir un rol activo en la construcción de espacios educativos participativos, organizados y orientados al desarrollo integral.</p>
+        
+        <p>Como plancha perteneciente al CELIDER 10-04, para el período 2026–2027, presentamos un plan de trabajo como una propuesta estructurada y coherente, orientada a fortalecer la organización distrital mediante una gestión eficiente, una formación académica de calidad y una comunicación clara y accesible.</p>
+
+        <h3>Valores Fundamentales</h3>
+        <ul>
+            <li><strong>Transparencia:</strong> Garantizamos procesos claros y accesibles en todas nuestras acciones</li>
+            <li><strong>Excelencia:</strong> Comprometidos con la calidad académica y formativa</li>
+            <li><strong>Colaboración:</strong> Fomentamos el trabajo en equipo y la participación activa</li>
+            <li><strong>Responsabilidad:</strong> Cumplimiento de normativas y compromisos institucionales</li>
+            <li><strong>Innovación:</strong> Implementación de metodologías modernas y efectivas</li>
+        </ul>
+    </section>
+
+    <!-- Equipo -->
+    <section id="equipo" class="section">
+        <h2>Nuestro Equipo</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <h4>Darwin Cuevas</h4>
+                <h5>Presidente</h5>
+                <p><strong>Misión:</strong> Crear un ambiente competitivo y de constante mejora donde delegados y debatientes puedan explotar sus talentos.</p>
+                <p><strong>Visión:</strong> Brindar acceso a todos los delegados y debatientes a un entorno con las herramientas para mejorar.</p>
+            </div>
+
+            <div class="team-card">
+                <h4>Ángela Roldan</h4>
+                <h5>Secretaría General</h5>
+                <p><strong>Misión:</strong> Promover registros, reuniones y eventos mediante una organización meticulosa y eficaz que optimice la búsqueda de información.</p>
+                <p><strong>Visión:</strong> Ser una Secretaría General dinámica e innovadora que fortalezca la organización del club.</p>
+            </div>
+
+            <div class="team-card">
+                <h4>Eileen Moronta</h4>
+                <h5>Secretaría de Capacitaciones</h5>
+                <p><strong>Misión:</strong> Formar delegados competentes, seguros y críticos mediante un sistema de capacitación estructurado, interactivo y accesible.</p>
+                <p><strong>Visión:</strong> Consolidar una cultura de capacitación que eleve la calidad académica y humana del modelo distrital.</p>
+            </div>
+
+            <div class="team-card">
+                <h4>Cristian Vargas</h4>
+                <h5>Secretaría de Proyectos</h5>
+                <p><strong>Misión:</strong> Fortalecer la logística estratégica y garantizar una formación de calidad mediante la articulación efectiva con los programas del PLERD.</p>
+                <p><strong>Visión:</strong> Fomentar un distrito ágil y colaborativo donde la organización estratégica impulse experiencias formativas significativas.</p>
+            </div>
+
+            <div class="team-card">
+                <h4>María Barros</h4>
+                <h5>Secretaría de Comunicaciones</h5>
+                <p><strong>Misión:</strong> Fortalecer la comunicación del Modelo de las Naciones Unidas mediante la implementación de medios oficiales.</p>
+                <p><strong>Visión:</strong> Consolidar una Secretaría moderna, organizada y sostenible, reconocida por su transparencia e identidad institucional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Propuestas Destacadas -->
+    <section id="propuestas" class="section">
+        <h2>Propuestas Clave</h2>
+        
+        <h3>Presidencia</h3>
+        <ul>
+            <li>Introducir el formato de debate escolar en cada centro</li>
+            <li>Prácticas WSDC entre centros del distrito</li>
+            <li>Banco de mesas directivas para modelos de centro</li>
+            <li>Premiación en el modelo distrital para mesas y voluntarios</li>
+        </ul>
+
+        <h3>Secretaría General</h3>
+        <ul>
+            <li>Integrar sistemas digitales (WhatsApp, Excel, Word) para registros</li>
+            <li>Evaluación continua del rendimiento de miembros y voluntarios</li>
+            <li>Fomento de la participación activa y capacitación regular</li>
+        </ul>
+
+        <h3>Secretaría de Capacitaciones</h3>
+        <ul>
+            <li>Registro, diagnóstico e inducción de delegados</li>
+            <li>Capacitaciones prácticas mediante Flash MUN y herramientas interactivas</li>
+            <li>Proceso de postulación y capacitación de mesas directivas</li>
+            <li>Sistema de monitoreo y retroalimentación formativa</li>
+        </ul>
+
+        <h3>Secretaría de Proyectos</h3>
+        <ul>
+            <li>Planificación integral de todas las actividades distritales</li>
+            <li>Elaboración de planes logísticos detallados</li>
+            <li>Checklist para antes, durante y después de cada evento</li>
+            <li>Supervisión y cumplimiento estricto de cronogramas</li>
+        </ul>
+
+        <h3>Secretaría de Comunicaciones</h3>
+        <ul>
+            <li>Implementación de redes sociales institucionales</li>
+            <li>Creación de guía base de comunicación distrital</li>
+            <li>Archivo digital de diseños y recursos gráficos</li>
+            <li>Equipo creativo distrital con voluntarios capacitados</li>
+        </ul>
+    </section>
+
+    <!-- Plan Estratégico -->
+    <section id="plan" class="section">
+        <h2>Plan Estratégico General</h2>
+        
+        <p>El Plan Estratégico General de la plancha CELIDER 10-04 para el período 2026–2027 tiene como finalidad consolidar una gestión distrital organizada, participativa y orientada a la excelencia académica y formativa.</p>
+
+        <h3>Ejes Estratégicos</h3>
+        <div class="ejes-grid">
+            <div class="eje-card">
+                <h4>Liderazgo</h4>
+                <p>Impulsa la participación activa, la toma de iniciativas y el compromiso responsable, fomentando una cultura de trabajo colaborativo.</p>
+            </div>
+
+            <div class="eje-card">
+                <h4>Organización</h4>
+                <p>Garantiza la correcta planificación y ejecución de las actividades, estableciendo procesos claros y uso eficiente de recursos.</p>
+            </div>
+
+            <div class="eje-card">
+                <h4>Formación</h4>
+                <p>Fortalecimiento continuo de las capacidades académicas, comunicativas y humanas de los participantes.</p>
+            </div>
+
+            <div class="eje-card">
+                <h4>Seguimiento</h4>
+                <p>Permite evaluar el desarrollo de cada proyecto, identificar mejoras y asegurar la continuidad de las acciones.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>CELIDER 10-04</strong></p>
+        <p>"En nuestras manos está el futuro"</p>
+        <p>Programa de Liderazgo Educativo de la República Dominicana (PLERD)</p>
+        <p>Período 2026-2027</p>
+    </footer>
+
+    <script>
+        // Animación de aparición al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section, .team-card, .eje-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'all 0.8s ease';
+            observer.observe(el);
+        });
+
+        // Efecto parallax en el hero
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Smooth scroll para la navegación
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
